@@ -171,6 +171,7 @@ spec:
     spec:
       accessModes:
       - "ReadWriteOnce"
+      storageClassName: "csi-disk-delay"
       resources:
         requests:
-          storage: 10Gi
+          storage: 20Gi

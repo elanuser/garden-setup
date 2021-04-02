@@ -75,7 +75,9 @@ seedSpec:
     pods: (( configValues.seed.networks.pods ))
     services: (( configValues.seed.networks.services ))
     shootDefaults: (( configValues.seed.shootDefaultNetworks || { "pods" = "100.96.0.0/11", "services" = "100.64.0.0/13" } ))
-  taints: (( configValues.config.mode == "soil" ? [{ "key" = "seed.gardener.cloud/protected" }] :~~ ))
+  taints: (( configValues.config.mode == "soil" ? [{ "key" = "seed.gardener.cloud/invisible" }, { "key" = "seed.gardener.cloud/protected" }] :~~ ))
+  volume:
+    minimumSize: 20Gi
   settings: (( element( merge( seedSettingMergeTemplate, configValues.seed || {} ), "settings" ) ))
 
 seedSettingMergeTemplate:
